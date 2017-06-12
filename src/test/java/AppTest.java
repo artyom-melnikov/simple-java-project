@@ -21,7 +21,7 @@ public class AppTest {
 
     @Test
     public void name() throws Exception {
-        Paths.get("some*sad***asd00");
+        //Paths.get("some*sad***asd00");
     }
 
     @Test
