@@ -16,7 +16,7 @@ public class ProcessTest {
 
     @Test
     public void testProcessBuilder() throws Exception {
-        ProcessBuilder processBuilder = new ProcessBuilder("gradlew.bat", "--no-daemon", "build");
+        ProcessBuilder processBuilder = new ProcessBuilder("gradlew", "--no-daemon", "build");
         processBuilder.directory(new File("./gradle-project-for-test/"));
         processBuilder.redirectErrorStream(true);
         Process process = processBuilder.start();
