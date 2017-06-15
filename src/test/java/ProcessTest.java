@@ -28,7 +28,7 @@ public class ProcessTest {
         ZipUtils.unzip(projectArchive, folder.getRoot());
     }
 
-    @Test
+    //@Test
     public void testProcessBuilder() throws Exception {
         String execName = SystemUtils.IS_OS_WINDOWS ? "gradlew.bat" : "gradlew";
         ProcessBuilder processBuilder = new ProcessBuilder(execName, "--no-daemon", "build");
