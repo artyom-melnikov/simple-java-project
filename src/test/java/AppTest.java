@@ -37,4 +37,10 @@ public class AppTest {
         //assertEquals("\"string with, and \"\"quotes\"\"\"", csvSafeString("string with, and \"quotes\""));
         //assertEquals("123", csvSafeString("test_match_returnExpectedMatch_whenPatternAndTextProvided[match should return true when pattern \"*a\\Qb*\" and text \"a\\Qb\" provided]"));
     }
+
+    @Test
+    public void testSomeChineseOutput() {
+        // FIRE-12594
+        LOGGER.error("Chinese output: \uD843\uDF2D\uD843\uDF2D\uD843\uDF2D\uD843\uDF2D\uD843\uDF2D\uD843\uDF2D\uD843\uDF2D\uD843\uDF2D\uD843\uDF2D\uD843\uDF2D\uD843\uDF2D\uD843\uDF2D\uD843\uDF2D\uD843\uDF2D\uD843\uDF2D");
+    }
 }
