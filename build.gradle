@@ -38,6 +38,8 @@ dependencies {
     compile 'org.jsoup:jsoup:1.10.3'
     compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
     compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.25'
+    compile group: 'org.apache.commons', name: 'commons-csv', version: '1.4'
+
 
     testCompile 'junit:junit:4.12'
 }

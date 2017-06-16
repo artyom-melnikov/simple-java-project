@@ -12,7 +12,7 @@ import org.junit.runners.Parameterized;
 
 @RunWith(Parameterized.class)
 public class ParameterizedTest {
-    @Parameterized.Parameters(/*name = "testEscapingMechanism with parameter \"{0}\""*/)
+    @Parameterized.Parameters(name = "testEscapingMechanism with parameter \"{0}\"")
     public static List<String> data() {
         return Arrays.asList("*a\\Qb*", "a\\Qb");
     }
