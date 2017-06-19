@@ -28,7 +28,7 @@ public class ProcessTest {
         ZipUtils.unzip(projectArchive, folder.getRoot());
     }
 
-    //@Test
+    @Test
     public void testProcessBuilder() throws Exception {
         String execName = SystemUtils.IS_OS_WINDOWS ? "gradlew.bat" : "gradlew";
         ProcessBuilder processBuilder = new ProcessBuilder(execName, "--no-daemon", "build");
@@ -43,6 +43,7 @@ public class ProcessTest {
             builder.append(System.getProperty("line.separator"));
         }
         String result = builder.toString();
+        System.out.println(result);
         assertNotEquals(-1, result.indexOf("BUILD SUCCESSFUL"));
     }
 }
