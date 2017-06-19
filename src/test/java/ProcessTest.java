@@ -30,9 +30,9 @@ public class ProcessTest {
 
     @Test
     public void testProcessBuilder() throws Exception {
-        String execName = SystemUtils.IS_OS_WINDOWS ? "gradlew.bat" : "gradlew";
-        ProcessBuilder processBuilder = new ProcessBuilder(execName, "--no-daemon", "build");
+        ProcessBuilder processBuilder = new ProcessBuilder("gradle", "--no-daemon", "build");
         processBuilder.directory(new File(folder.getRoot(),"gradle-project-for-test"));
+        processBuilder.environment().put("PATH", System.getenv("PATH"));
         processBuilder.redirectErrorStream(true);
         Process process = processBuilder.start();
         BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
