@@ -35,16 +35,20 @@ public class ProcessTest {
         System.out.println("ENV PATH: " + System.getenv("PATH"));
         processBuilder.environment().put("PATH", System.getenv("PATH"));
         processBuilder.redirectErrorStream(true);
-        Process process = processBuilder.start();
-        BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-        StringBuilder builder = new StringBuilder();
-        String line;
-        while ((line = reader.readLine()) != null) {
-            builder.append(line);
-            builder.append(System.getProperty("line.separator"));
+        try {
+            Process process = processBuilder.start();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            StringBuilder builder = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                builder.append(line);
+                builder.append(System.getProperty("line.separator"));
+            }
+            String result = builder.toString();
+            System.out.println(result);
+            assertNotEquals(-1, result.indexOf("BUILD SUCCESSFUL"));
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        String result = builder.toString();
-        System.out.println(result);
-        assertNotEquals(-1, result.indexOf("BUILD SUCCESSFUL"));
     }
 }
