@@ -32,6 +32,7 @@ public class ProcessTest {
     public void testProcessBuilder() throws Exception {
         ProcessBuilder processBuilder = new ProcessBuilder("gradle", "--no-daemon", "build");
         processBuilder.directory(new File(folder.getRoot(),"gradle-project-for-test"));
+        System.out.println("ENV PATH: " + System.getenv("PATH"));
         processBuilder.environment().put("PATH", System.getenv("PATH"));
         processBuilder.redirectErrorStream(true);
         Process process = processBuilder.start();
