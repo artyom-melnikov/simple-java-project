@@ -32,23 +32,17 @@ public class ProcessTest {
     public void testProcessBuilder() throws Exception {
         ProcessBuilder processBuilder = new ProcessBuilder("gradle", "--no-daemon", "build");
         processBuilder.directory(new File(folder.getRoot(),"gradle-project-for-test"));
-        System.out.println("ENV PATH: " + System.getenv("PATH"));
         processBuilder.environment().put("PATH", System.getenv("PATH"));
         processBuilder.redirectErrorStream(true);
-        try {
-            Process process = processBuilder.start();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            StringBuilder builder = new StringBuilder();
-            String line;
-            while ((line = reader.readLine()) != null) {
-                builder.append(line);
-                builder.append(System.getProperty("line.separator"));
-            }
-            String result = builder.toString();
-            System.out.println(result);
-            assertNotEquals(-1, result.indexOf("BUILD SUCCESSFUL"));
-        } catch (Exception e) {
-            e.printStackTrace();
+        Process process = processBuilder.start();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+        StringBuilder builder = new StringBuilder();
+        String line;
+        while ((line = reader.readLine()) != null) {
+            builder.append(line);
+            builder.append(System.lineSeparator());
         }
+        String result = builder.toString();
+        assertNotEquals(-1, result.indexOf("BUILD SUCCESSFUL"));
     }
 }
