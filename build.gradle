@@ -14,23 +14,17 @@ apply plugin: 'application'
 
 apply plugin: 'maven'
 
-group = 'com.company.root'
-// artifactId is taken by default, from folder name
+group = 'org.apxeolog.snschecker'
 version = '0.0.1-SNAPSHOT'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 task writeNewPom << {
-    pom {
-
-    }.writeTo("pom.xml")
+    pom {}.writeTo("pom.xml")
 }
 
-// In this section you declare where to find the dependencies of your project
 repositories {
-    // Use jcenter for resolving your dependencies.
-    // You can declare any Maven/Ivy/file repository here.
     jcenter()
 }
 
@@ -42,6 +36,7 @@ dependencies {
     compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
     compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.25'
     compile group: 'org.apache.commons', name: 'commons-csv', version: '1.4'
+    compile group: 'commons-cli', name: 'commons-cli', version: '1.4'
 
 
     testCompile 'junit:junit:4.12'
@@ -49,22 +44,21 @@ dependencies {
 
 test {
     testLogging {
-        // Make sure output from
-        // standard out or error is shown
-        // in Gradle output.
         showStandardStreams = true
-
-        // Or we use events method:
-        // events 'standard_out', 'standard_error'
-
-        // Or set property events:
-        // events = ['standard_out', 'standard_error']
-
-        // Instead of string values we can
-        // use enum values:
-        // events org.gradle.api.tasks.testing.logging.TestLogEvent.STANDARD_OUT,
-        //        org.gradle.api.tasks.testing.logging.TestLogEvent.STANDARD_ERROR,
     }
+}
+
+task fatJar(type: Jar) {
+    manifest {
+        attributes(
+                "Main-Class": "org.apxeolog.snschecker.Main",
+                "Implementation-Title": "Gradle",
+                "Implementation-Version": version)
+    }
+    archiveName = 'snschecker.jar'
+
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
 }
 
 // Define the main class for the application

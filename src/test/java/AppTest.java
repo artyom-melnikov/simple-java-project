@@ -27,11 +27,6 @@ import org.slf4j.LoggerFactory;
 public class AppTest {
     private static final Logger LOGGER = LoggerFactory.getLogger(AppTest.class);
 
-    @Test public void testAppHasAGreeting() {
-        App classUnderTest = new App();
-        assertNotNull("app should have a greeting", classUnderTest.getGreeting());
-    }
-
     static String csvSafeString(String str) {
         if (str != null) {
             return "\"" + str.replaceAll("\"", "\"\"") + "\"";

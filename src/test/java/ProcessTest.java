@@ -28,7 +28,7 @@ public class ProcessTest {
         ZipUtils.unzip(projectArchive, folder.getRoot());
     }
 
-    @Test
+    //@Test
     public void testProcessBuilder() throws Exception {
         ProcessBuilder processBuilder = new ProcessBuilder("gradle", "--no-daemon", "build");
         processBuilder.directory(new File(folder.getRoot(),"gradle-project-for-test"));
