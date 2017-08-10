@@ -38,6 +38,7 @@ dependencies {
     compile group: 'org.apache.commons', name: 'commons-csv', version: '1.4'
     compile group: 'commons-cli', name: 'commons-cli', version: '1.4'
 
+    compile group: 'org.eclipse.jgit', name: 'org.eclipse.jgit', version: '4.8.0.201706111038-r'
 
     testCompile 'junit:junit:4.12'
 }
