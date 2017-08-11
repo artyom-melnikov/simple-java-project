@@ -38,7 +38,6 @@ dependencies {
     compile group: 'org.apache.commons', name: 'commons-csv', version: '1.4'
     compile group: 'commons-cli', name: 'commons-cli', version: '1.4'
 
-
     testCompile 'junit:junit:4.12'
 }
 

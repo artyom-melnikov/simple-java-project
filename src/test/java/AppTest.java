@@ -27,42 +27,11 @@ import org.slf4j.LoggerFactory;
 public class AppTest {
     private static final Logger LOGGER = LoggerFactory.getLogger(AppTest.class);
 
-    static String csvSafeString(String str) {
-        if (str != null) {
-            return "\"" + str.replaceAll("\"", "\"\"") + "\"";
-        } else {
-            return "";
-        }
-    }
-
-    @Test
-    public void testCreateUnmappableFile() {
-        File file = new File("\uD843\uDF2D\uD843\uDF2D\uD843\uDF2D.c");
-
-    }
-
-    @Test
-    public void name() throws Exception {
-        LOGGER.debug("Debug logger");
-        assertTrue(true);
-    }
-
-    @Test
-    public void testCsvSafeString() {
-        LOGGER.error("ERROR STRING");
-        assertTrue(true);
-        //assertEquals("\"string with, and \"\"quotes\"\"\"", csvSafeString("string with, and \"quotes\""));
-        //assertEquals("123", csvSafeString("test_match_returnExpectedMatch_whenPatternAndTextProvided[match should return true when pattern \"*a\\Qb*\" and text \"a\\Qb\" provided]"));
-    }
-
     @Test
     public void testSomeChineseOutput() {
         // FIRE-12594
         LOGGER.error("Chinese output: \uD843\uDF2D\uD843\uDF2D\uD843\uDF2D\uD843\uDF2D\uD843\uDF2D\uD843\uDF2D\uD843\uDF2D\uD843\uDF2D\uD843\uDF2D\uD843\uDF2D\uD843\uDF2D\uD843\uDF2D\uD843\uDF2D\uD843\uDF2D\uD843\uDF2D");
-    }
-
-    private static String oldCSVOutputFunction(CSVFormat format, String strVal, Integer intVal) {
-        return String.format("\"%s\",%d%n", strVal, intVal);
+        assertTrue(true);
     }
 
     private static String newCSVOutputFunction(CSVFormat format, String strVal, Integer intVal) throws IOException {
